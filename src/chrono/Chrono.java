@@ -12,7 +12,7 @@ public class Chrono extends Subject {
     private int time = 0;
 
     public Chrono() {
-        timer = new Timer(1000, e -> notifyObservers());
+        timer = new Timer(1000, e -> updateTime());
     }
 
     private void updateTime() {

@@ -9,6 +9,11 @@ public class Dial extends Observer {
     private int time;
     private Chrono chrono;
 
+    public Dial(Chrono chrono) {
+        this.chrono = chrono;
+        chrono.attach(this);
+    }
+
     @Override
     public void update() {
         time = chrono.getTime();
