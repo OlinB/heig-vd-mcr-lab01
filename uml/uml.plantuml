@@ -6,16 +6,39 @@ hide circle
 top to bottom direction
 skinparam linetype ortho
 
-class Chrono {
-
-}
-
 class Subject {
-
+    +attach()
+    +detach()
+    +notifyObservers()
 }
 
 class Observer {
     +update()
 }
+
+class ChronoManager {
+    - nbChronos: int
+}
+
+class DialManager {
+
+}
+
+class Chrono {
+    -timer: Timer
+    +getTimer(): Timer
+}
+
+class Dial {
+    +update()
+}
+
 Subject <|-- Chrono
+Observer <|-- Dial
+Subject -> Observer: observers
+Chrono <- Dial: chrono
+ChronoManager o-- Chrono: chronos
+DialManager o-- Dial: dials
+ChronoManager -right[hidden]- Subject
+DialManager -left[hidden]- Observer
 @enduml
