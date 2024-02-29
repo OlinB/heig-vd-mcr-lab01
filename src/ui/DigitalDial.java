@@ -6,11 +6,11 @@ import chrono.Chrono;
 import javax.swing.*;
 import java.awt.*;
 
-public abstract class Dial extends BaseDial {
+public class DigitalDial extends Dial {
 
     private final JPanel panel;
 
-    public Dial(Chrono chrono) {
+    public DigitalDial(Chrono chrono) {
         super(chrono);
         // Add an image to the frame
         panel = getPanel(1);
@@ -29,6 +29,16 @@ public abstract class Dial extends BaseDial {
         panel.repaint();
     }
 
-    public abstract JPanel getPanel(int nbDials);
+    public JPanel getPanel(int nbDials) {
+        return new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                for (int i = 0; i < nbDials; i++) {
+                    g.drawString(getHours() + ":" + getMinutes() + ":" + getSeconds(), i * 200 + 100, 100);
+                }
+            }
+        };
+    }
 
 }

@@ -2,14 +2,12 @@ package chrono;
 
 import observer.Observer;
 
-import javax.swing.*;
-
-public class Dial extends Observer {
+public abstract class BaseDial extends Observer {
 
     private int time;
     private Chrono chrono;
 
-    public Dial(Chrono chrono) {
+    public BaseDial(Chrono chrono) {
         this.chrono = chrono;
         chrono.attach(this);
     }

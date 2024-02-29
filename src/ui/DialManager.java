@@ -1,7 +1,5 @@
 package ui;
 
-import ui.Dial;
-
 import javax.swing.*;
 import java.awt.*;
 
