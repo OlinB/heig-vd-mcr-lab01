@@ -19,7 +19,6 @@ public class Dial {
                 super.paintComponent(g);
                 for (int i = 0; i < nbDials; i++) {
                     g.drawImage(image, 0, i * 200, this);
-
                 }
             }
         };

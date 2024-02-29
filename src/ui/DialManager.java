@@ -3,29 +3,26 @@ package ui;
 import ui.Dial;
 
 import javax.swing.*;
+import java.awt.*;
 
-public class DialManager {
+public class DialManager extends JFrame {
 
     public DialManager(int nbDials) {
-
-        JFrame frame = new JFrame("Chrono");
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-
+        super("Panneau de contrôle");
+        setLayout(new GridLayout(nbDials + 1, 1));
         for (int i = 0; i < nbDials; i++) {
+            JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+            // label
+            JLabel label = new JLabel("Chrono #" + i);
+            panel.add(label);
 
-                Dial dial = new Dial("images/cadran_chiffres_arabes.jpg");
+            // buttons
 
-                frame.add(dial.getPanel(nbDials));
+            add(panel);
+
         }
-
-
-
-        frame.setSize(200,nbDials * 200);
-
-        frame.setVisible(true);
-
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        pack();
+        setVisible(true);
     }
 }
