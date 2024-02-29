@@ -7,15 +7,19 @@ import java.awt.*;
 
 public class DialManager extends JFrame {
 
-    private static final String[] BUTTONS_DIAL = {"démarrer", "arrêter", "réinitialiser", "cadran romain", "cadran arabe", "numérique"};
+    private static final String[] BUTTONS_DIAL = {"cadran romain", "cadran arabe", "numérique"};
     private static final String[] BUTTONS_ALL = {"cadran romain", "cadran arabe", "numérique"};
 
-    private Chrono[] chronos;
+    private final Chrono[] chronos;
 
     public DialManager(int nbChronos) {
         super("Panneau de contrôle");
 
         chronos = new Chrono[nbChronos];
+
+        for (int i = 0; i < nbChronos; i++) {
+            chronos[i] = new Chrono();
+        }
 
         setLayout(new GridLayout(nbChronos + 1, 1));
 
@@ -25,10 +29,23 @@ public class DialManager extends JFrame {
             JLabel label = new JLabel("Chrono #" + i);
             panel.add(label);
 
+            int finalI = i;
+
+            JButton startButton = new JButton("démarrer");
+            startButton.addActionListener(e -> chronos[finalI].start());
+            panel.add(startButton);
+
+            JButton stopButton = new JButton("arrêter");
+            stopButton.addActionListener(e -> chronos[finalI].stop());
+            panel.add(stopButton);
+
+            JButton resetButton = new JButton("réinitialiser");
+            resetButton.addActionListener(e -> chronos[finalI].reset());
+            panel.add(resetButton);
+
             // buttons
             for (String text : BUTTONS_DIAL) {
                 JButton button = new JButton(text);
-                int finalI = i;
                 button.addActionListener(e -> doAction(finalI, text));
                 panel.add(button);
             }
