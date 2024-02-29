@@ -1,19 +1,25 @@
 package ui;
 
+import chrono.Chrono;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class DialManager extends JFrame {
 
     private static final String[] BUTTONS_DIAL = {"démarrer", "arrêter", "réinitialiser", "cadran romain", "cadran arabe", "numérique"};
     private static final String[] BUTTONS_ALL = {"cadran romain", "cadran arabe", "numérique"};
 
-    public DialManager(int nbDials) {
+    private Chrono[] chronos;
+
+    public DialManager(int nbChronos) {
         super("Panneau de contrôle");
-        setLayout(new GridLayout(nbDials + 1, 1));
-        for (int i = 0; i < nbDials; i++) {
+
+        chronos = new Chrono[nbChronos];
+
+        setLayout(new GridLayout(nbChronos + 1, 1));
+
+        for (int i = 0; i < nbChronos; i++) {
             JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
             // label
             JLabel label = new JLabel("Chrono #" + i);
@@ -22,14 +28,13 @@ public class DialManager extends JFrame {
             // buttons
             for (String text : BUTTONS_DIAL) {
                 JButton button = new JButton(text);
-                button.addActionListener(e -> System.out.println("Button " + text + " clicked"));
+                int finalI = i;
+                button.addActionListener(e -> doAction(finalI, text));
                 panel.add(button);
             }
-
             add(panel);
-
-
         }
+
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
         // label
@@ -38,12 +43,22 @@ public class DialManager extends JFrame {
 
         for (String text : BUTTONS_ALL) {
             JButton button = new JButton(text);
-            button.addActionListener(e -> System.out.println("Button " + text + " clicked"));
+            button.addActionListener(e -> doAction(text));
             panel.add(button);
         }
+
         add(panel);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
+    }
+
+    private void doAction(int chronoID, String action) {
+        System.out.println("Chrono #" + chronoID + " " + action);
+    }
+
+    private void doAction(String action) {
+        System.out.println("All chronos " + action);
     }
 }
