@@ -25,4 +25,8 @@ public class RomanDial extends AnalogDial{
     protected Color getMinutesColor() {
         return Color.GRAY;
     }
+
+    public static String getButtonName() {
+        return "Cadran Romain";
+    }
 }

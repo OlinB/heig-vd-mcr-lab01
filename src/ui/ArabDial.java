@@ -16,4 +16,8 @@ public class ArabDial extends AnalogDial{
         return Toolkit.getDefaultToolkit().getImage("images/cadran_chiffres_arabes.jpg").getScaledInstance(200, 200, Image.SCALE_DEFAULT);
     }
 
+    public static String getButtonName() {
+        return "Cadran arabe";
+    }
+
 }

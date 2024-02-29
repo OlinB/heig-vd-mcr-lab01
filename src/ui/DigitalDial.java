@@ -29,6 +29,10 @@ public class DigitalDial extends Dial {
         panel.repaint();
     }
 
+    public static String getButtonName() {
+        return "Numérique";
+    }
+
     public JPanel getPanel(int nbDials) {
         return new JPanel() {
             @Override

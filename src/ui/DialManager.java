@@ -7,9 +7,6 @@ import java.awt.*;
 
 public class DialManager extends JFrame {
 
-    private static final String[] BUTTONS_DIAL = {"cadran romain", "cadran arabe", "numérique"};
-    private static final String[] BUTTONS_ALL = {"cadran romain", "cadran arabe", "numérique"};
-
     private final Chrono[] chronos;
 
     public DialManager(int nbChronos) {
@@ -43,12 +40,18 @@ public class DialManager extends JFrame {
             resetButton.addActionListener(e -> chronos[finalI].reset());
             panel.add(resetButton);
 
-            // buttons
-            for (String text : BUTTONS_DIAL) {
-                JButton button = new JButton(text);
-                button.addActionListener(e -> doAction(finalI, text));
-                panel.add(button);
-            }
+            JButton romanButton = new JButton(RomanDial.getButtonName());
+            romanButton.addActionListener(e -> doAction(finalI, RomanDial.getButtonName()));
+            panel.add(romanButton);
+
+            JButton arabButton = new JButton(ArabDial.getButtonName());
+            arabButton.addActionListener(e -> doAction(finalI, ArabDial.getButtonName()));
+            panel.add(arabButton);
+
+            JButton digitalButton = new JButton(DigitalDial.getButtonName());
+            digitalButton.addActionListener(e -> doAction(finalI, DigitalDial.getButtonName()));
+            panel.add(digitalButton);
+
             add(panel);
         }
 
@@ -58,17 +61,27 @@ public class DialManager extends JFrame {
         JLabel label = new JLabel("Tous les chronos");
         panel.add(label);
 
-        for (String text : BUTTONS_ALL) {
-            JButton button = new JButton(text);
-            button.addActionListener(e -> doAction(text));
-            panel.add(button);
-        }
+        JButton romanButton = new JButton(RomanDial.getButtonName());
+        romanButton.addActionListener(e -> doAction(RomanDial.getButtonName()));
+        panel.add(romanButton);
+
+        JButton arabButton = new JButton(ArabDial.getButtonName());
+        arabButton.addActionListener(e -> doAction(ArabDial.getButtonName()));
+        panel.add(arabButton);
+
+        JButton digitalButton = new JButton(DigitalDial.getButtonName());
+        digitalButton.addActionListener(e -> doAction(DigitalDial.getButtonName()));
+        panel.add(digitalButton);
 
         add(panel);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
+    }
+
+    public DialManager(Chrono[] chronos) {
+        this.chronos = chronos;
     }
 
     private void doAction(int chronoID, String action) {
