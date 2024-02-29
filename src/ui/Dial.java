@@ -16,13 +16,6 @@ public abstract class Dial extends BaseDial {
         panel = getPanel(1);
     }
 
-    public void display() {
-        JFrame frame = new JFrame();
-        frame.add(panel);
-        frame.setSize(200, 200);
-        frame.setVisible(true);
-    }
-
     @Override
     public void update() {
         super.update();

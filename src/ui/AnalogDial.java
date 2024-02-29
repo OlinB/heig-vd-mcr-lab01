@@ -19,13 +19,6 @@ public abstract class AnalogDial extends Dial {
         panel = getPanel(1);
     }
 
-    public void display() {
-        JFrame frame = new JFrame();
-        frame.add(panel);
-        frame.setSize(200, 200);
-        frame.setVisible(true);
-    }
-
     protected abstract Image getImage();
 
     protected Color getSecondsColor() {
@@ -64,11 +57,6 @@ public abstract class AnalogDial extends Dial {
         return 5;
     }
 
-    @Override
-    public void update() {
-        super.update();
-        panel.repaint();
-    }
 
     public JPanel getPanel(int nbDials) {
         return new JPanel() {

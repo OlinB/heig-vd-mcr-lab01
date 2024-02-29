@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class DialManager extends JFrame {
 
-    private final Chrono[] chronos;
+    private Chrono[] chronos;
 
     public DialManager(int nbChronos) {
         super("Panneau de contrôle");
@@ -41,15 +41,15 @@ public class DialManager extends JFrame {
             panel.add(resetButton);
 
             JButton romanButton = new JButton(RomanDial.getButtonName());
-            romanButton.addActionListener(e -> doAction(finalI, RomanDial.getButtonName()));
+            romanButton.addActionListener(e -> new Window(new RomanDial(chronos[finalI]).getPanel(1)));
             panel.add(romanButton);
 
             JButton arabButton = new JButton(ArabDial.getButtonName());
-            arabButton.addActionListener(e -> doAction(finalI, ArabDial.getButtonName()));
+            arabButton.addActionListener(e -> new Window(new ArabDial(chronos[finalI]).getPanel(1)));
             panel.add(arabButton);
 
             JButton digitalButton = new JButton(DigitalDial.getButtonName());
-            digitalButton.addActionListener(e -> doAction(finalI, DigitalDial.getButtonName()));
+            digitalButton.addActionListener(e ->new Window(new DigitalDial(chronos[finalI]).getPanel(1)));
             panel.add(digitalButton);
 
             add(panel);
@@ -82,10 +82,6 @@ public class DialManager extends JFrame {
 
     public DialManager(Chrono[] chronos) {
         this.chronos = chronos;
-    }
-
-    private void doAction(int chronoID, String action) {
-        System.out.println("Chrono #" + chronoID + " " + action);
     }
 
     private void doAction(String action) {
