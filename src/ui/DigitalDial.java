@@ -19,7 +19,7 @@ public class DigitalDial extends Dial {
 
         chronoId = chrono.getId();
 
-        label = new JLabel("Chrono #" + chronoId + ": " + String.format("%02d", getHours()) + " " + String.format("%02d", getMinutes()) + "m " + String.format("%02d", getSeconds()) + "s");
+        label = new JLabel("Chrono #" + chronoId + ": " + String.format("%02d", getHours()) + " " + String.format("%02d", getMinutes()) + "m " + String.format("%02d", getSeconds()) + "s", JLabel.CENTER);
         panel = createPanel();
     }
 
@@ -39,7 +39,7 @@ public class DigitalDial extends Dial {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 setSize(200, 200);
-                setLayout(new FlowLayout());
+                setLayout(new GridLayout());
                 setBorder(new LineBorder(Color.BLACK, 2));
                 this.add(label);
             }
