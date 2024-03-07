@@ -29,7 +29,6 @@ public class Chrono extends Subject {
     }
 
     public void reset() {
-        timer.restart();
         time = 0;
     }
 
