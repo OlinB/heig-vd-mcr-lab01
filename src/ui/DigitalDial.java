@@ -9,9 +9,8 @@ import java.awt.*;
 public class DigitalDial extends Dial {
 
 
-    public final static String buttonName = "Numérique";
-
-    private JLabel label;
+    public final static String BUTTON_NAME = "Numérique";
+    private final JLabel label;
     private final int chronoId;
 
     public DigitalDial(Chrono chrono) {
@@ -30,10 +29,10 @@ public class DigitalDial extends Dial {
     }
 
     public static String getButtonName() {
-        return buttonName;
+        return BUTTON_NAME;
     }
 
-    public JPanel createPanel() {
+    protected JPanel createPanel() {
         return new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {

@@ -11,7 +11,6 @@ public abstract class Dial extends BaseDial {
 
     public Dial(Chrono chrono) {
         super(chrono);
-        // Add an image to the frame
         panel = createPanel();
     }
 

@@ -3,7 +3,7 @@ package observer;
 import java.util.*;
 
 public abstract class Subject {
-    private List<Observer> observers = new ArrayList<>();
+    private final List<Observer> observers = new ArrayList<>();
 
     public void attach(Observer o) {
         observers.add(o);

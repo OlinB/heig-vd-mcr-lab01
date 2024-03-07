@@ -6,39 +6,115 @@ hide circle
 top to bottom direction
 skinparam linetype ortho
 
-class Subject {
+abstract class Subject {
     +attach()
     +detach()
     +notifyObservers()
 }
 
-class Observer {
-    +update()
-}
-
-class ChronoManager {
-    - nbChronos: int
-}
-
-class DialManager {
-
+abstract class Observer {
+    + abstract update()
 }
 
 class Chrono {
-    -timer: Timer
-    +getTimer(): Timer
+  + Chrono(int)
+  + stop(): void
+  + start(): void
+  + reset(): void
+  - updateTime(): void
+   -time: int
+   -id: int
 }
 
-class Dial {
-    +update()
+abstract class BaseDial {
+  + BaseDial(Chrono):
+  + update(): void
+  # getSeconds(): int
+  # getMinutes(): int
+  # getHours(): int
+   -hours: int
+   -minutes: int
+   -seconds: int
 }
 
-Subject <|-- Chrono
-Observer <|-- Dial
-Subject -> Observer: observers
-Chrono <- Dial: chrono
-ChronoManager o-- Chrono: chronos
-DialManager o-- Dial: dials
-ChronoManager -right[hidden]- Subject
-DialManager -left[hidden]- Observer
+abstract class Dial {
+  + Dial(Chrono)
+  + update(): void
+  # abstract createPanel(): JPanel
+  # panel: JPanel
+}
+
+abstract class AnalogDial {
+  + AnalogDial(Chrono)
+  # createPanel(): JPanel
+  # getMinutesWidth(): int
+  # getImage(): Image
+  # getSecondsColor(): Color
+  # getSecondsLength(): int
+  # getMinutesColor(): Color
+  # getMinutesLength(): int
+  # getHoursLength(): int
+  # getHoursWidth(): int
+  # getSecondsWidth(): int
+  # getHoursColor(): Color
+  - drawSecondsHand(Graphics2D): void
+  - drawHoursHand(Graphics2D): void
+  - drawHand(Graphics2D, double, int, int, Color): void
+  - drawMinutesHand(Graphics2D): void
+
+  - image: Image
+}
+
+class ArabDial {
+  + ArabDial(Chrono)
+   #getImage(): Image
+   #getSecondsColor(): Color
+   #getMinutesColor(): Color
+   + BUTTON_NAME: String
+}
+
+class RomanDial {
+   + RomanDial(Chrono):
+   #getImage(): Image
+   #getSecondsColor(): Color
+   #getMinutesColor(): Color
+   + BUTTON_NAME: String
+}
+
+class DigitalDial {
+  + DigitalDial(Chrono):
+  + update(): void
+  # createPanel(): JPanel
+   +BUTTON_NAME: String
+   -panel: JPanel
+   -chronoId: int
+}
+
+class DialManager {
+  + DialManager(int)
+  - doAction(String): void
+}
+
+class Window {
+  + Window(Dial)
+  + Window(Dial[])
+}
+
+class JFrame {
+
+}
+
+Dial        -UP-^   BaseDial
+Chrono      -UP-^   Subject
+BaseDial    -UP-^   Observer
+AnalogDial  -UP-^   Dial
+ArabDial    -UP-^   AnalogDial
+DigitalDial -UP-^   Dial
+RomanDial   -UP-^   AnalogDial
+Window      -UP-^   JFrame
+
+Subject     "1"-right->"*"   Observer: has
+BaseDial    "1"-left>"1"    Chrono: has
+Chrono        <--       DialManager: creates
+Window  " 1"-left-"1..*"    Dial: contains
 @enduml

@@ -18,14 +18,8 @@ public abstract class AnalogDial extends Dial {
     }
 
     protected abstract Image getImage();
-
-    protected Color getSecondsColor() {
-        return Color.RED;
-    }
-
-    protected Color getMinutesColor() {
-        return Color.BLUE;
-    }
+    protected abstract Color getSecondsColor();
+    protected abstract Color getMinutesColor();
 
     protected Color getHoursColor() {
         return Color.BLACK;
@@ -56,7 +50,7 @@ public abstract class AnalogDial extends Dial {
     }
 
 
-    public JPanel createPanel() {
+    protected JPanel createPanel() {
         return new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {

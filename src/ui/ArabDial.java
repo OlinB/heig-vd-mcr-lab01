@@ -4,10 +4,10 @@ import chrono.Chrono;
 
 import java.awt.*;
 
-public class ArabDial extends AnalogDial{
+public class ArabDial extends AnalogDial {
 
 
-    public final static String buttonName = "Cadran arabe";
+    public final static String BUTTON_NAME = "Cadran arabe";
 
 
     public ArabDial(Chrono chrono) {
@@ -19,8 +19,13 @@ public class ArabDial extends AnalogDial{
         return Toolkit.getDefaultToolkit().getImage("images/cadran_chiffres_arabes.jpg").getScaledInstance(200, 200, Image.SCALE_DEFAULT);
     }
 
-    public static String getButtonName() {
-        return buttonName;
+    @Override
+    protected Color getSecondsColor() {
+        return Color.RED;
     }
 
+    @Override
+    protected Color getMinutesColor() {
+        return Color.BLUE;
+    }
 }

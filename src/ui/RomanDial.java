@@ -7,7 +7,7 @@ import java.awt.*;
 public class RomanDial extends AnalogDial{
 
 
-    public final static String buttonName = "Cadran Romain";
+    public final static String BUTTON_NAME = "Cadran Romain";
 
     public RomanDial(Chrono chrono) {
         super(chrono);
@@ -26,9 +26,5 @@ public class RomanDial extends AnalogDial{
     @Override
     protected Color getMinutesColor() {
         return Color.GRAY;
-    }
-
-    public static String getButtonName() {
-        return buttonName;
     }
 }

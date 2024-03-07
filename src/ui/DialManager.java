@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class DialManager extends JFrame {
 
-    private Chrono[] chronos;
+    private final Chrono[] chronos;
 
     public DialManager(int nbChronos) {
         super("Panneau de contrôle");
@@ -40,11 +40,11 @@ public class DialManager extends JFrame {
             resetButton.addActionListener(e -> chronos[finalI].reset());
             panel.add(resetButton);
 
-            JButton romanButton = new JButton(RomanDial.getButtonName());
+            JButton romanButton = new JButton(RomanDial.BUTTON_NAME);
             romanButton.addActionListener(e -> new Window(new RomanDial(chronos[finalI])));
             panel.add(romanButton);
 
-            JButton arabButton = new JButton(ArabDial.getButtonName());
+            JButton arabButton = new JButton(ArabDial.BUTTON_NAME);
             arabButton.addActionListener(e -> new Window(new ArabDial(chronos[finalI])));
             panel.add(arabButton);
 
@@ -61,12 +61,12 @@ public class DialManager extends JFrame {
         JLabel label = new JLabel("Tous les chronos");
         panel.add(label);
 
-        JButton romanButton = new JButton(RomanDial.getButtonName());
-        romanButton.addActionListener(e -> createDials(RomanDial.getButtonName()));
+        JButton romanButton = new JButton(RomanDial.BUTTON_NAME);
+        romanButton.addActionListener(e -> createDials(RomanDial.BUTTON_NAME));
         panel.add(romanButton);
 
-        JButton arabButton = new JButton(ArabDial.getButtonName());
-        arabButton.addActionListener(e -> createDials(ArabDial.getButtonName()));
+        JButton arabButton = new JButton(ArabDial.BUTTON_NAME);
+        arabButton.addActionListener(e -> createDials(ArabDial.BUTTON_NAME));
         panel.add(arabButton);
 
         JButton digitalButton = new JButton(DigitalDial.getButtonName());
@@ -86,13 +86,13 @@ public class DialManager extends JFrame {
         Dial[] dials = new Dial[chronos.length];
         for (int i = 0; i < chronos.length; i++) {
             switch (action) {
-                case RomanDial.buttonName:
+                case RomanDial.BUTTON_NAME:
                     dials[i] = new RomanDial(chronos[i]);
                     break;
-                case ArabDial.buttonName:
+                case ArabDial.BUTTON_NAME:
                     dials[i] = new ArabDial(chronos[i]);
                     break;
-                case DigitalDial.buttonName:
+                case DigitalDial.BUTTON_NAME:
                     dials[i] = new DigitalDial(chronos[i]);
                     break;
                 default:
