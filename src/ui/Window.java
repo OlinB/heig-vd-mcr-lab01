@@ -5,17 +5,17 @@ import java.awt.*;
 
 public class Window extends JFrame {
 
-    public Window(JPanel panel) {
+    public Window(Dial dial) {
         this.repaint();
-        add(panel);
+        add(dial.getPanel());
         setSize(200, 200);
         setVisible(true);
     }
 
-    public Window(JPanel[] panels) {
-        setLayout(new GridLayout(panels.length,  1));
-        for (JPanel panel : panels) {
-            add(panel);
+    public Window(Dial[] dials) {
+        setLayout(new GridLayout(dials.length,  1));
+        for (Dial dial : dials) {
+            add(dial.getPanel());
         }
         setSize(200, 200);
         setVisible(true);

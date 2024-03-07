@@ -4,16 +4,15 @@ import chrono.BaseDial;
 import chrono.Chrono;
 
 import javax.swing.*;
-import java.awt.*;
 
 public abstract class Dial extends BaseDial {
 
-    private final JPanel panel;
+    protected JPanel panel;
 
     public Dial(Chrono chrono) {
         super(chrono);
         // Add an image to the frame
-        panel = getPanel(1);
+        panel = createPanel();
     }
 
     @Override
@@ -22,6 +21,10 @@ public abstract class Dial extends BaseDial {
         panel.repaint();
     }
 
-    public abstract JPanel getPanel(int nbDials);
+    protected abstract JPanel createPanel();
+
+    public JPanel getPanel() {
+        return panel;
+    }
 
 }

@@ -41,15 +41,15 @@ public class DialManager extends JFrame {
             panel.add(resetButton);
 
             JButton romanButton = new JButton(RomanDial.getButtonName());
-            romanButton.addActionListener(e -> new Window(new RomanDial(chronos[finalI]).getPanel(1)));
+            romanButton.addActionListener(e -> new Window(new RomanDial(chronos[finalI])));
             panel.add(romanButton);
 
             JButton arabButton = new JButton(ArabDial.getButtonName());
-            arabButton.addActionListener(e -> new Window(new ArabDial(chronos[finalI]).getPanel(1)));
+            arabButton.addActionListener(e -> new Window(new ArabDial(chronos[finalI])));
             panel.add(arabButton);
 
             JButton digitalButton = new JButton(DigitalDial.getButtonName());
-            digitalButton.addActionListener(e ->new Window(new DigitalDial(chronos[finalI]).getPanel(1)));
+            digitalButton.addActionListener(e ->new Window(new DigitalDial(chronos[finalI])));
             panel.add(digitalButton);
 
             add(panel);
@@ -80,11 +80,25 @@ public class DialManager extends JFrame {
         setVisible(true);
     }
 
-    public DialManager(Chrono[] chronos) {
-        this.chronos = chronos;
-    }
 
     private void doAction(String action) {
-        System.out.println("All chronos " + action);
+        // create dials for all chronos
+        Dial[] dials = new Dial[chronos.length];
+        for (int i = 0; i < chronos.length; i++) {
+            switch (action) {
+                case "Cadran romain":
+                    dials[i] = new RomanDial(chronos[i]);
+                    break;
+                case "Cadran arabe":
+                    dials[i] = new ArabDial(chronos[i]);
+                    break;
+                case "Numérique":
+                    dials[i] = new DigitalDial(chronos[i]);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Action not supported: " + action);
+            }
+        }
+        new Window(dials);
     }
 }
