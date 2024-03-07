@@ -1,5 +1,8 @@
+import chrono.Chrono;
+import ui.DialManager;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        DialManager dm = new DialManager(3);
     }
 }

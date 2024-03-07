@@ -5,6 +5,7 @@ import chrono.Chrono;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Line2D;
 
 public abstract class AnalogDial extends Dial {
 
@@ -63,32 +64,34 @@ public abstract class AnalogDial extends Dial {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
+                Graphics2D g2 = (Graphics2D) g;
                 for (int i = 0; i < nbDials; i++) {
-                    g.drawImage(image, 0, i * 200, this);
-                    drawSecondsHand(g, i);
-                    drawMinutesHand(g, i);
-                    drawHoursHand(g, i);
+                    g2.drawImage(image, 0, i * 200, this);
+                    drawHoursHand(g2, i);
+                    drawMinutesHand(g2, i);
+                    drawSecondsHand(g2, i);
                 }
             }
         };
     }
 
-    private void drawHand(Graphics g, double angle, int length, int width, Color color, int i){
+    private void drawHand(Graphics2D g, double angle, int length, int width, Color color, int i){
         int x = (int) (i *200 + 100 + length * Math.sin(angle));
         int y = (int) (100 - length * Math.cos(angle));
         g.setColor(color);
-        g.drawLine(i *200 + 100, 100, x, y);
+        g.setStroke(new BasicStroke(width));
+        g.draw(new Line2D.Double(i *200 + 100, 100, x, y));
     }
 
-    private void drawSecondsHand(Graphics g, int i) {
+    private void drawSecondsHand(Graphics2D g, int i) {
         drawHand(g, Math.toRadians(this.getSeconds() * 6), getSecondsLength(), getSecondsWidth(), getSecondsColor(), i);
     }
 
-    private void drawMinutesHand(Graphics g, int i) {
+    private void drawMinutesHand(Graphics2D g, int i) {
         drawHand(g, Math.toRadians(this.getMinutes() * 6), getMinutesLength(), getMinutesWidth(), getMinutesColor(), i);
     }
 
-    private void drawHoursHand(Graphics g, int i) {
+    private void drawHoursHand(Graphics2D g, int i) {
         drawHand(g, Math.toRadians(this.getHours() * 30 + this.getMinutes() / 2), getHoursLength(), getHoursWidth(), getHoursColor(), i);
     }
 
