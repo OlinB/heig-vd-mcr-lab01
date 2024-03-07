@@ -15,7 +15,6 @@ public abstract class BaseDial extends Observer {
     @Override
     public void update() {
         time = chrono.getTime();
-        System.out.println("Time: " + getHours() + ":" + getMinutes() + ":" + getSeconds());
     }
 
     protected int getSeconds() {

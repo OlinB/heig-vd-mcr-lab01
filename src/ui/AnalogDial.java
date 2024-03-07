@@ -63,11 +63,15 @@ public abstract class AnalogDial extends Dial {
                 super.paintComponent(g);
                 Graphics2D g2 = (Graphics2D) g;
 
-                g2.drawImage(image, 0, 0, this);
+                g2.drawImage(image, 0, 0, 200, 200,  this);
                 drawHoursHand(g2);
                 drawMinutesHand(g2);
                 drawSecondsHand(g2);
 
+            }
+            @Override
+            public Dimension getPreferredSize() {
+                return new Dimension(200, 200);
             }
         };
     }

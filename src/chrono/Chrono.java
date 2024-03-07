@@ -10,9 +10,11 @@ public class Chrono extends Subject {
 
     private final Timer timer;
     private int time = 0;
+    private final int id;
 
-    public Chrono() {
+    public Chrono(int id) {
         timer = new Timer(10, e -> updateTime());
+        this.id = id;
     }
 
     private void updateTime() {
@@ -34,6 +36,10 @@ public class Chrono extends Subject {
 
     public int getTime() {
         return time;
+    }
+
+    public int getId() {
+        return id;
     }
 }
 

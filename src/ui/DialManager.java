@@ -15,7 +15,7 @@ public class DialManager extends JFrame {
         chronos = new Chrono[nbChronos];
 
         for (int i = 0; i < nbChronos; i++) {
-            chronos[i] = new Chrono();
+            chronos[i] = new Chrono(i);
         }
 
         setLayout(new GridLayout(nbChronos + 1, 1));
@@ -62,15 +62,15 @@ public class DialManager extends JFrame {
         panel.add(label);
 
         JButton romanButton = new JButton(RomanDial.getButtonName());
-        romanButton.addActionListener(e -> doAction(RomanDial.getButtonName()));
+        romanButton.addActionListener(e -> createDials(RomanDial.getButtonName()));
         panel.add(romanButton);
 
         JButton arabButton = new JButton(ArabDial.getButtonName());
-        arabButton.addActionListener(e -> doAction(ArabDial.getButtonName()));
+        arabButton.addActionListener(e -> createDials(ArabDial.getButtonName()));
         panel.add(arabButton);
 
         JButton digitalButton = new JButton(DigitalDial.getButtonName());
-        digitalButton.addActionListener(e -> doAction(DigitalDial.getButtonName()));
+        digitalButton.addActionListener(e -> createDials(DigitalDial.getButtonName()));
         panel.add(digitalButton);
 
         add(panel);
@@ -81,18 +81,18 @@ public class DialManager extends JFrame {
     }
 
 
-    private void doAction(String action) {
+    private void createDials(String action) {
         // create dials for all chronos
         Dial[] dials = new Dial[chronos.length];
         for (int i = 0; i < chronos.length; i++) {
             switch (action) {
-                case "Cadran romain":
+                case RomanDial.buttonName:
                     dials[i] = new RomanDial(chronos[i]);
                     break;
-                case "Cadran arabe":
+                case ArabDial.buttonName:
                     dials[i] = new ArabDial(chronos[i]);
                     break;
-                case "Numérique":
+                case DigitalDial.buttonName:
                     dials[i] = new DigitalDial(chronos[i]);
                     break;
                 default:

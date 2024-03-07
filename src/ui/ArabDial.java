@@ -7,6 +7,9 @@ import java.awt.*;
 public class ArabDial extends AnalogDial{
 
 
+    public final static String buttonName = "Cadran arabe";
+
+
     public ArabDial(Chrono chrono) {
         super(chrono);
     }
@@ -17,7 +20,7 @@ public class ArabDial extends AnalogDial{
     }
 
     public static String getButtonName() {
-        return "Cadran arabe";
+        return buttonName;
     }
 
 }

@@ -8,16 +8,18 @@ public class Window extends JFrame {
     public Window(Dial dial) {
         this.repaint();
         add(dial.getPanel());
-        setSize(200, 200);
         setVisible(true);
+        setResizable(false);
+        pack();
     }
 
     public Window(Dial[] dials) {
-        setLayout(new GridLayout(dials.length,  1));
+        setLayout(new FlowLayout());
         for (Dial dial : dials) {
             add(dial.getPanel());
         }
-        setSize(200, 200);
+
         setVisible(true);
+        pack();
     }
 }

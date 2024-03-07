@@ -7,6 +7,8 @@ import java.awt.*;
 public class RomanDial extends AnalogDial{
 
 
+    public final static String buttonName = "Cadran Romain";
+
     public RomanDial(Chrono chrono) {
         super(chrono);
     }
@@ -27,6 +29,6 @@ public class RomanDial extends AnalogDial{
     }
 
     public static String getButtonName() {
-        return "Cadran Romain";
+        return buttonName;
     }
 }
