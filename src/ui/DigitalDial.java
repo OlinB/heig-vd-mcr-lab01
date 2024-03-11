@@ -10,7 +10,6 @@ public class DigitalDial extends Dial {
 
 
     public final static String BUTTON_NAME = "Numérique";
-    private final JLabel label;
     private final int chronoId;
 
     public DigitalDial(Chrono chrono) {
@@ -41,6 +40,7 @@ public class DigitalDial extends Dial {
                 setLayout(new GridLayout());
                 setBorder(new LineBorder(Color.BLACK, 2));
                 this.add(label);
+                // TODO: display label in the center of the panel
             }
             @Override
             public Dimension getPreferredSize() {

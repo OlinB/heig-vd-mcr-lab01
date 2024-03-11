@@ -15,6 +15,7 @@ public abstract class AnalogDial extends Dial {
         // Add an image to the frame
         image = getImage();
         panel = createPanel();
+        label = new JLabel("Chrono #" + chrono.getId(), JLabel.CENTER);
     }
 
     protected abstract Image getImage();
@@ -61,7 +62,7 @@ public abstract class AnalogDial extends Dial {
                 drawHoursHand(g2);
                 drawMinutesHand(g2);
                 drawSecondsHand(g2);
-
+                this.add(label);
             }
             @Override
             public Dimension getPreferredSize() {

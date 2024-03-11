@@ -8,6 +8,7 @@ import javax.swing.*;
 public abstract class Dial extends BaseDial {
 
     protected JPanel panel;
+    protected JLabel label;
 
     public Dial(Chrono chrono) {
         super(chrono);

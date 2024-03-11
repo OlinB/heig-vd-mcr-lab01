@@ -3,6 +3,7 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 
+// TODO: Add pause/unpause interaction when clicking on the panel
 public class Window extends JFrame {
 
     public Window(Dial dial) {

@@ -15,7 +15,7 @@ public class DialManager extends JFrame {
         chronos = new Chrono[nbChronos];
 
         for (int i = 0; i < nbChronos; i++) {
-            chronos[i] = new Chrono(i);
+            chronos[i] = new Chrono(i + 1);
         }
 
         setLayout(new GridLayout(nbChronos + 1, 1));
