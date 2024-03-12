@@ -119,6 +119,7 @@ Subject     "1"--right-->"*"   Observer: has
 BaseDial    "1"--left->"1"    Chrono: has
 
 Chrono      "1..9 "<--"1 "        DialManager: creates
-DialManager "1   "-->"*"           Window: " has"
+DialManager "1   "-->"*"           Window: " creates"
+DialManager "1   "-->"*"           Dial: " creates"
 Window      "1 "-->"1..*"     Dial: contains
 @enduml
