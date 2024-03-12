@@ -18,7 +18,6 @@ public class DigitalDial extends Dial {
         chronoId = chrono.getId();
 
         label = new JLabel("Chrono #" + chronoId + ": " + String.format("%02d", getHours()) + " " + String.format("%02d", getMinutes()) + "m " + String.format("%02d", getSeconds()) + "s", JLabel.CENTER);
-        panel = createPanel();
     }
 
     @Override
@@ -40,7 +39,6 @@ public class DigitalDial extends Dial {
                 setLayout(new GridLayout());
                 setBorder(new LineBorder(Color.BLACK, 2));
                 this.add(label);
-                // TODO: display label in the center of the panel
             }
             @Override
             public Dimension getPreferredSize() {

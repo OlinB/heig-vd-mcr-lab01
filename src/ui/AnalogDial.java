@@ -12,14 +12,15 @@ public abstract class AnalogDial extends Dial {
 
     public AnalogDial(Chrono chrono) {
         super(chrono);
-        // Add an image to the frame
+        // Define the image and the label for the panel
         image = getImage();
-        panel = createPanel();
         label = new JLabel("Chrono #" + chrono.getId(), JLabel.CENTER);
     }
 
     protected abstract Image getImage();
+
     protected abstract Color getSecondsColor();
+
     protected abstract Color getMinutesColor();
 
     protected Color getHoursColor() {
@@ -58,11 +59,12 @@ public abstract class AnalogDial extends Dial {
                 super.paintComponent(g);
                 Graphics2D g2 = (Graphics2D) g;
 
-                g2.drawImage(image, 0, 0, 200, 200,  this);
+                g2.drawImage(image, 0, 0, 200, 200, this);
                 drawHoursHand(g2);
                 drawMinutesHand(g2);
                 drawSecondsHand(g2);
                 this.add(label);
+                // TODO: display label in the center of the panel
             }
             @Override
             public Dimension getPreferredSize() {

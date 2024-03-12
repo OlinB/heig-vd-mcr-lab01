@@ -4,6 +4,8 @@ import chrono.BaseDial;
 import chrono.Chrono;
 
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public abstract class Dial extends BaseDial {
 
@@ -13,6 +15,7 @@ public abstract class Dial extends BaseDial {
     public Dial(Chrono chrono) {
         super(chrono);
         panel = createPanel();
+        addMouseListener();
     }
 
     @Override
@@ -25,6 +28,15 @@ public abstract class Dial extends BaseDial {
 
     public JPanel getPanel() {
         return panel;
+    }
+
+    private void addMouseListener() {
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                chrono.toggle();
+            }
+        });
     }
 
 }

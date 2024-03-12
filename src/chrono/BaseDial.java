@@ -5,7 +5,7 @@ import observer.Observer;
 public abstract class BaseDial extends Observer {
 
     private int time;
-    private final Chrono chrono;
+    protected final Chrono chrono;
 
     public BaseDial(Chrono chrono) {
         this.chrono = chrono;

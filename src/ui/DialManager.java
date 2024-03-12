@@ -23,7 +23,7 @@ public class DialManager extends JFrame {
         for (int i = 0; i < nbChronos; i++) {
             JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
             // label
-            JLabel label = new JLabel("Chrono #" + i);
+            JLabel label = new JLabel("Chrono #" + (i + 1));
             panel.add(label);
 
             int finalI = i;
