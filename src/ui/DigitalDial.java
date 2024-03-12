@@ -26,10 +26,6 @@ public class DigitalDial extends Dial {
         super.update();
     }
 
-    public static String getButtonName() {
-        return BUTTON_NAME;
-    }
-
     protected JPanel createPanel() {
         return new JPanel() {
             @Override

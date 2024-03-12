@@ -21,9 +21,11 @@ class Chrono {
   + stop(): void
   + start(): void
   + reset(): void
+  + toggle(): void
   - updateTime(): void
    -time: int
    -id: int
+   -isRunning: boolean
 }
 
 abstract class BaseDial {
@@ -32,16 +34,17 @@ abstract class BaseDial {
   # getSeconds(): int
   # getMinutes(): int
   # getHours(): int
-   -hours: int
-   -minutes: int
-   -seconds: int
+   -time: int
 }
 
 abstract class Dial {
   + Dial(Chrono)
   + update(): void
+  + getPanel(): JPanel
   # abstract createPanel(): JPanel
+  - addMouseListener(): void
   # panel: JPanel
+  # label: JLabel
 }
 
 abstract class AnalogDial {
@@ -61,7 +64,6 @@ abstract class AnalogDial {
   - drawHoursHand(Graphics2D): void
   - drawHand(Graphics2D, double, int, int, Color): void
   - drawMinutesHand(Graphics2D): void
-
   - image: Image
 }
 
@@ -86,7 +88,6 @@ class DigitalDial {
   + update(): void
   # createPanel(): JPanel
    +BUTTON_NAME: String
-   -panel: JPanel
    -chronoId: int
 }
 
@@ -113,8 +114,11 @@ DigitalDial -UP-^   Dial
 RomanDial   -UP-^   AnalogDial
 Window      -UP-^   JFrame
 
-Subject     "1"-right->"*"   Observer: has
-BaseDial    "1"-left>"1"    Chrono: has
-Chrono        <--       DialManager: creates
-Window  " 1"-left-"1..*"    Dial: contains
+
+Subject     "1"--right-->"*"   Observer: has
+BaseDial    "1"--left->"1"    Chrono: has
+
+Chrono      "1..9 "<--"1 "        DialManager: creates
+DialManager "1   "-->"*"           Window: " has"
+Window      "1 "-->"1..*"     Dial: contains
 @enduml

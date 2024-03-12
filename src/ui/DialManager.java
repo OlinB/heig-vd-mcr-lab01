@@ -48,7 +48,7 @@ public class DialManager extends JFrame {
             arabButton.addActionListener(e -> new Window(new ArabDial(chronos[finalI])));
             panel.add(arabButton);
 
-            JButton digitalButton = new JButton(DigitalDial.getButtonName());
+            JButton digitalButton = new JButton(DigitalDial.BUTTON_NAME);
             digitalButton.addActionListener(e ->new Window(new DigitalDial(chronos[finalI])));
             panel.add(digitalButton);
 
@@ -69,8 +69,8 @@ public class DialManager extends JFrame {
         arabButton.addActionListener(e -> createDials(ArabDial.BUTTON_NAME));
         panel.add(arabButton);
 
-        JButton digitalButton = new JButton(DigitalDial.getButtonName());
-        digitalButton.addActionListener(e -> createDials(DigitalDial.getButtonName()));
+        JButton digitalButton = new JButton(DigitalDial.BUTTON_NAME);
+        digitalButton.addActionListener(e -> createDials(DigitalDial.BUTTON_NAME));
         panel.add(digitalButton);
 
         add(panel);
