@@ -63,8 +63,8 @@ public abstract class AnalogDial extends Dial {
                 drawHoursHand(g2);
                 drawMinutesHand(g2);
                 drawSecondsHand(g2);
+                setLayout(new GridLayout());
                 this.add(label);
-                // TODO: display label in the center of the panel
             }
             @Override
             public Dimension getPreferredSize() {

@@ -33,7 +33,6 @@ public class DigitalDial extends Dial {
                 super.paintComponent(g);
                 setSize(200, 200);
                 setLayout(new GridLayout());
-                setBorder(new LineBorder(Color.BLACK, 2));
                 this.add(label);
             }
             @Override

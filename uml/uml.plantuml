@@ -31,6 +31,7 @@ class Chrono {
 abstract class BaseDial {
   + BaseDial(Chrono):
   + update(): void
+  + getChrono(): Chrono
   # getSeconds(): int
   # getMinutes(): int
   # getHours(): int
@@ -116,7 +117,7 @@ Window      -UP-^   JFrame
 
 
 Subject     "1"--right-->"*"   Observer: has
-BaseDial    "1"--left->"1"    Chrono: has
+BaseDial    "*"--left->"1"    Chrono: has
 
 Chrono      "1..9 "<--"1 "        DialManager: creates
 DialManager "1   "-->"*"           Window: " creates"

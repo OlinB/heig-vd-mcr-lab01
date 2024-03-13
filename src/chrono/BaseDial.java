@@ -28,4 +28,8 @@ public abstract class BaseDial extends Observer {
     protected int getHours() {
         return time / 3600;
     }
+
+    public Chrono getChrono() {
+        return chrono;
+    }
 }
